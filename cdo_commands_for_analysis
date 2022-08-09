@@ -1,27 +1,27 @@
-#* * * * * * * * * * * * * * * * * * * * * * * * *
-Most used cdo commands
-#* * * * * * * * * * * * * * * * * * * * * * * * *
+!* * * * * * * * * * * * * * * * * * * * * * * * *
+!Most used cdo commands
+!* * * * * * * * * * * * * * * * * * * * * * * * *
 
-With the 'cdo info' command you can see the timesteps, levels, minimum, maximum, averages and missing values. Type
+!With the 'cdo info' command you can see the timesteps, levels, minimum, maximum, averages and missing values. Type
 
->cdo -info <infile>
+cdo -info <infile>
 
-and with ncdump from the NCO's all metadata and data contents can be displayed. To display the metadata of the file,
-type
+!and with ncdump from the NCO's all metadata and data contents can be displayed. To display the metadata of the file,
+!type
 
->ncdump -h <infile>
+ncdump -h <infile>
 
-select variables u10 and v10
->cdo -selname,u10,v10 <infile> <outfile>
+!select variables u10 and v10
+cdo -selname,u10,v10 <infile> <outfile>
 
-combining some basic analysis
->cdo -timmean -yearsum -setrtoc2,75,78,1,0  -selmon,9,10,11,12,1,2,3 -selyear,1960/1969 ifile ofile
+!combining some basic analysis
+cdo -timmean -yearsum -setrtoc2,75,78,1,0  -selmon,9,10,11,12,1,2,3 -selyear,1960/1969 ifile ofile
 
-merge all the nc files
->cdo mergetime *.nc outfile
->cdo cat *.cat outfile
+!merge all the nc files
+cdo mergetime *.nc outfile
+cdo cat *.cat outfile
 
 
-#* * * * * * * * * * * * * * * * * * * * * * * * *
-Keep addding/Leave comments
-#* * * * * * * * * * * * * * * * * * * * * * * * *
+!* * * * * * * * * * * * * * * * * * * * * * * * *
+!Keep addding/Leave comments
+!* * * * * * * * * * * * * * * * * * * * * * * * *
