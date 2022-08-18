@@ -1,0 +1,18 @@
+import netCDF4
+import numpy
+import xarray
+import os
+def process_coords(ds, concat_dim='time', drop=True):
+    coord_vars = [v for v in ds.data_vars if concat_dim not in ds[v].dims]
+    if drop:
+        return ds.drop(coord_vars)
+    else:
+        return ds.set_coords(coord_vars)
+#ds = xr.open_mfdataset('*.nc', preprocess=process_coords)
+
+
+folders = os.listdir("./example_output")
+for folder in folders:
+    if os.path.isdir(os.path.join('test', folder)):
+       ds = xarray.open_mfdataset('SoutheastUS_US-LL1_ICB20TRCNPRDCTCBC.elm.h0.20*.nc', preprocess=process_coords)
+       ds.to_netcdf('SoutheastUS_US-LL1_ICB20TRCNPRDCTCBC.elm_2000_2015_g00001.nc')
